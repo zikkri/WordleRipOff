@@ -53,3 +53,8 @@ body {
   vertical-align: middle;    
   padding-top: 1em;
 }
+
+.modal {
+  color: black;
+  font-family: Poppins;
+}

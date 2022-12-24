@@ -29,7 +29,7 @@ function UserGuess() {
 //needs to be five letters
 function ValidateGuess() {
   if (guess.value.length != 5) {
-    console.log("this is an invalid guess");
+    $(".guess").effect("shake");
     guess.value = "";
     return false;
   }
@@ -129,10 +129,8 @@ function DisplayGuess() {
           div[i].style.backgroundColor = "yellow";
         }
       }
-
-      //need to make a method -- if all letters match it breaks -- will have to add as another else if in above methods
-
       guess.value = "";
+      DisplayLoss();
       break;
   }
 }
@@ -144,20 +142,24 @@ function NewGame() {
 }
 
 function GetWord() {
-  //method to fetch new word from api + filter to make words 5 letters only
+  //method to fetch new wor d from api + filter to make words 5 letters only
   //current word popped from possilbewords list and into oldwords list
 }
 
 //popup modal if you win -- offer to play another round
 function DisplayWin() {
   //modal popup
-  const winModal = document.querySelector("#exampleModal");
-  winModal.style.
+  setTimeout(function () {
+    $("#winModal").modal("show");
+  }, 500);
 }
 
 //popup modal if you reach max tries -- offer to play again
 function DisplayLoss() {
   //modal popup
+  setTimeout(function () {
+    $("#lossModal").modal("show");
+  }, 500);
 }
 
 function ResetAll() {

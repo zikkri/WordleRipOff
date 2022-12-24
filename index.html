@@ -30,7 +30,7 @@
           <h1>Wordle Rip-off</h1>
         </div>
         <div class="container guess">
-          <input type="text" id="guesser" />
+          <input type="text" id="guesser" maxlength="5" minlength="5" />
           <button>Guess</button>
           <button id="reset">New Game</button>
         </div>
@@ -149,38 +149,105 @@
       </div>
     </div>
 
-    <!-- Modal -->
+    <!-- Win Modal -->
     <div
       class="modal fade"
-      id="exampleModal"
+      id="winModal"
       tabindex="-1"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">
+              You Guessed It!
+            </h1>
             <button
               type="button"
               class="btn-close"
               data-bs-dismiss="modal"
               aria-label="Close"
+              onclick="NewGame()"
             ></button>
           </div>
-          <div class="modal-body">...</div>
+          <div class="modal-body">Can't stop on a win right?</div>
           <div class="modal-footer">
             <button
               type="button"
               class="btn btn-secondary"
               data-bs-dismiss="modal"
+              onclick="NewGame()"
             >
               Close
             </button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+              onclick="NewGame()"
+            >
+              Play Again?
+            </button>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- Loss Modal -->
+    <div
+      class="modal fade"
+      id="lossModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">
+              Sorry You Lose!
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+              onclick="NewGame()"
+            ></button>
+          </div>
+          <div class="modal-body">Can't stop on a loss right?</div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+              onclick="NewGame()"
+            >
+              Guess Again
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+              onclick="NewGame()"
+            >
+              Play Again?
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.3.min.js"
+      integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"
+      integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0="
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
