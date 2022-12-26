@@ -1,12 +1,35 @@
+//on load
+window.addEventListener("load", GetWord, false);
+
+//NEED TO FIGURE OUT HOW TO READ FROM FILE FIRST THEN I CAN DO THIS PROPERLY
+
+//MAYBE WRITE IN PYTHON AND SAVE IT AS A JSON AND READ THAT IN HERE
+
+//const fs = require("fs");
+// fs.readFile("sgb-words.txt", "utf-8", (err, data) => {
+//   if (err) {
+//     console.log(err);
+//     return;
+//   }
+//   console.log(data);
+// });
+
+// var text = fs.readFileSync("sgb-words.txt", "utf-8");
+// possibleWords = text;
+
+console.log(answer);
+
+//lists
+var possibleWords = [];
+var oldWords = [];
+
 //variables
 var guess = document.getElementById("guesser");
 var numberGuess = 0;
-var answer = "abcde"; //testing -- make call to an api + return it to this word
+var answer = "doggy";
 
-//lists
-var allWords = [];
-var possibleWords = [];
-var oldWords = [];
+//think this is how to do this -- not able to read file though yet
+// possibleWords[Math.floor(Math.random() * possibleWords.length - 1) + 1];
 
 //button stuff
 const button = document.querySelector(".guess button");
@@ -138,12 +161,22 @@ function DisplayGuess() {
 //reset game
 function NewGame() {
   ResetAll();
-  GetWord();
+  NewWord();
 }
 
 function GetWord() {
-  //method to fetch new wor d from api + filter to make words 5 letters only
-  //current word popped from possilbewords list and into oldwords list
+  let data = fetch("./sgb-words.json")
+    .then((response) => response.json())
+    .then((json) => console.log(json));
+
+  // const fs = require("fs");
+  // fs.readFile("sgb-words.txt", "utf-8", (err, data) => {
+  //   if (err) {
+  //     console.log(err);
+  //     return;
+  //   }
+  //   console.log(data);
+  // });
 }
 
 //popup modal if you win -- offer to play another round
@@ -219,4 +252,12 @@ function ResetAll() {
   div5.forEach((x) => {
     x.style.backgroundColor = "black";
   });
+}
+
+function NewWord() {
+  let oldWord = answer;
+  possibleWords.pop(answer);
+  oldWords.push(oldWord);
+  answer =
+    possibleWords[Math.floor(Math.random() * possibleWords.length - 1) + 1];
 }
