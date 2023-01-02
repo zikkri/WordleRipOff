@@ -66,7 +66,7 @@ function DisplayGuess() {
         if (guess.value[i].toLowerCase() == answer[i]) {
           div[i].style.backgroundColor = "green";
         } else if (answer.includes(guess.value[i].toLowerCase())) {
-          div[i].style.backgroundColor = "yellow";
+          div[i].style.backgroundColor = "#C4B915";
         }
       }
 
@@ -91,7 +91,7 @@ function DisplayGuess() {
         if (guess.value[i].toLowerCase() == answer[i]) {
           div[i].style.backgroundColor = "green";
         } else if (answer.includes(guess.value[i].toLowerCase())) {
-          div[i].style.backgroundColor = "yellow";
+          div[i].style.backgroundColor = "#C4B915";
         }
       }
 
@@ -116,7 +116,7 @@ function DisplayGuess() {
         if (guess.value[i].toLowerCase() == answer[i]) {
           div[i].style.backgroundColor = "green";
         } else if (answer.includes(guess.value[i].toLowerCase())) {
-          div[i].style.backgroundColor = "yellow";
+          div[i].style.backgroundColor = "#C4B915";
         }
       }
 
@@ -141,7 +141,7 @@ function DisplayGuess() {
         if (guess.value[i].toLowerCase() == answer[i]) {
           div[i].style.backgroundColor = "green";
         } else if (answer.includes(guess.value[i].toLowerCase())) {
-          div[i].style.backgroundColor = "yellow";
+          div[i].style.backgroundColor = "#C4B915";
         }
       }
 
@@ -167,7 +167,7 @@ function DisplayGuess() {
         if (guess.value[i].toLowerCase() == answer[i]) {
           div[i].style.backgroundColor = "green";
         } else if (answer.includes(guess.value[i].toLowerCase())) {
-          div[i].style.backgroundColor = "yellow";
+          div[i].style.backgroundColor = "#C4B915";
         }
       }
 
