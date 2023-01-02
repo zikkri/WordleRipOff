@@ -1,24 +1,6 @@
 //on load
 window.addEventListener("load", GetWord, false);
 
-//NEED TO FIGURE OUT HOW TO READ FROM FILE FIRST THEN I CAN DO THIS PROPERLY
-
-//MAYBE WRITE IN PYTHON AND SAVE IT AS A JSON AND READ THAT IN HERE
-
-//const fs = require("fs");
-// fs.readFile("sgb-words.txt", "utf-8", (err, data) => {
-//   if (err) {
-//     console.log(err);
-//     return;
-//   }
-//   console.log(data);
-// });
-
-// var text = fs.readFileSync("sgb-words.txt", "utf-8");
-// possibleWords = text;
-
-console.log(answer);
-
 //lists
 var possibleWords = [];
 var oldWords = [];
@@ -26,14 +8,19 @@ var oldWords = [];
 //variables
 var guess = document.getElementById("guesser");
 var numberGuess = 0;
-var answer = "doggy";
-
-//think this is how to do this -- not able to read file though yet
-// possibleWords[Math.floor(Math.random() * possibleWords.length - 1) + 1];
+var answer = "";
 
 //button stuff
 const button = document.querySelector(".guess button");
 button.addEventListener("click", UserGuess, false);
+
+//make so enter will fire in the guess instead of having to click everytime
+guess.addEventListener("keypress", function (event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    button.click();
+  }
+});
 
 //took reset button out just needed to test for new game function
 const reset = document.querySelector("#reset");
@@ -42,9 +29,7 @@ reset.addEventListener("click", NewGame, false);
 //submit function
 function UserGuess() {
   if (ValidateGuess()) {
-    numberGuess++;
-    console.log(guess.value);
-    console.log(numberGuess);
+    numberGuess++;    
     DisplayGuess();
   }
 }
@@ -67,7 +52,7 @@ function DisplayGuess() {
       var first = document.querySelectorAll("#first-guess-div p");
       var div = document.querySelectorAll("#first-guess-div div");
 
-      if (guess.value == answer) {
+      if (guess.value.toLowerCase() == answer) {
         for (var i = 0; i < 5; i++) {
           first[i].innerHTML = guess.value[i];
           div[i].style.backgroundColor = "green";
@@ -78,9 +63,9 @@ function DisplayGuess() {
       for (var i = 0; i < 5; i++) {
         first[i].innerHTML = guess.value[i];
 
-        if (guess.value[i] == answer[i]) {
+        if (guess.value[i].toLowerCase() == answer[i]) {
           div[i].style.backgroundColor = "green";
-        } else if (answer.includes(guess.value[i])) {
+        } else if (answer.includes(guess.value[i].toLowerCase())) {
           div[i].style.backgroundColor = "yellow";
         }
       }
@@ -92,12 +77,20 @@ function DisplayGuess() {
       var second = document.querySelectorAll("#second-guess-div p");
       var div = document.querySelectorAll("#second-guess-div div");
 
+      if (guess.value.toLowerCase() == answer) {
+        for (var i = 0; i < 5; i++) {
+          second[i].innerHTML = guess.value[i];
+          div[i].style.backgroundColor = "green";
+        }
+        DisplayWin();
+      }
+
       for (var i = 0; i < 5; i++) {
         second[i].innerHTML = guess.value[i];
 
-        if (guess.value[i] == answer[i]) {
+        if (guess.value[i].toLowerCase() == answer[i]) {
           div[i].style.backgroundColor = "green";
-        } else if (answer.includes(guess.value[i])) {
+        } else if (answer.includes(guess.value[i].toLowerCase())) {
           div[i].style.backgroundColor = "yellow";
         }
       }
@@ -109,12 +102,20 @@ function DisplayGuess() {
       var third = document.querySelectorAll("#third-guess-div p");
       var div = document.querySelectorAll("#third-guess-div div");
 
+      if (guess.value.toLowerCase() == answer) {
+        for (var i = 0; i < 5; i++) {
+          third[i].innerHTML = guess.value[i];
+          div[i].style.backgroundColor = "green";
+        }
+        DisplayWin();
+      }
+
       for (var i = 0; i < 5; i++) {
         third[i].innerHTML = guess.value[i];
 
-        if (guess.value[i] == answer[i]) {
+        if (guess.value[i].toLowerCase() == answer[i]) {
           div[i].style.backgroundColor = "green";
-        } else if (answer.includes(guess.value[i])) {
+        } else if (answer.includes(guess.value[i].toLowerCase())) {
           div[i].style.backgroundColor = "yellow";
         }
       }
@@ -126,12 +127,20 @@ function DisplayGuess() {
       var fourth = document.querySelectorAll("#fourth-guess-div p");
       var div = document.querySelectorAll("#fourth-guess-div div");
 
+      if (guess.value.toLowerCase() == answer) {
+        for (var i = 0; i < 5; i++) {
+          fourth[i].innerHTML = guess.value[i];
+          div[i].style.backgroundColor = "green";
+        }
+        DisplayWin();
+      }
+
       for (var i = 0; i < 5; i++) {
         fourth[i].innerHTML = guess.value[i];
 
-        if (guess.value[i] == answer[i]) {
+        if (guess.value[i].toLowerCase() == answer[i]) {
           div[i].style.backgroundColor = "green";
-        } else if (answer.includes(guess.value[i])) {
+        } else if (answer.includes(guess.value[i].toLowerCase())) {
           div[i].style.backgroundColor = "yellow";
         }
       }
@@ -143,18 +152,32 @@ function DisplayGuess() {
       var fifth = document.querySelectorAll("#fifth-guess-div p");
       var div = document.querySelectorAll("#fifth-guess-div div");
 
+      if (guess.value.toLowerCase() == answer) {
+        for (var i = 0; i < 5; i++) {
+          fifth[i].innerHTML = guess.value[i];
+          div[i].style.backgroundColor = "green";
+        }
+        numberGuess = 0;
+        DisplayWin();
+      }
+
       for (var i = 0; i < 5; i++) {
         fifth[i].innerHTML = guess.value[i];
 
-        if (guess.value[i] == answer[i]) {
+        if (guess.value[i].toLowerCase() == answer[i]) {
           div[i].style.backgroundColor = "green";
-        } else if (answer.includes(guess.value[i])) {
+        } else if (answer.includes(guess.value[i].toLowerCase())) {
           div[i].style.backgroundColor = "yellow";
         }
       }
+
+      if (guess.value.toLowerCase() != answer) {
+        guess.value = "";
+        DisplayLoss();
+        break;
+      }
+
       guess.value = "";
-      DisplayLoss();
-      break;
   }
 }
 
@@ -165,18 +188,23 @@ function NewGame() {
 }
 
 function GetWord() {
-  let data = fetch("./sgb-words.json")
-    .then((response) => response.json())
-    .then((json) => console.log(json));
+  const xhr = new XMLHttpRequest();
+  xhr.onload = function (e) {
+    if (xhr.status === 200) {
+      const text = xhr.responseText;
+      const lines = text.split("\n");
+      const modifiedLines = lines.map((line) => line.replace("\r", ""));
+      //console.log(modifiedLines);
+      answer =
+        modifiedLines[Math.floor(Math.random() * modifiedLines.length - 1) + 1];
+      console.log(answer);
 
-  // const fs = require("fs");
-  // fs.readFile("sgb-words.txt", "utf-8", (err, data) => {
-  //   if (err) {
-  //     console.log(err);
-  //     return;
-  //   }
-  //   console.log(data);
-  // });
+      possibleWords = modifiedLines;
+    }
+  };
+
+  xhr.open("GET", "./sgb-words.txt");
+  xhr.send();
 }
 
 //popup modal if you win -- offer to play another round
@@ -255,9 +283,7 @@ function ResetAll() {
 }
 
 function NewWord() {
-  let oldWord = answer;
-  possibleWords.pop(answer);
-  oldWords.push(oldWord);
   answer =
     possibleWords[Math.floor(Math.random() * possibleWords.length - 1) + 1];
+  console.log(answer);
 }
