@@ -218,6 +218,9 @@ function DisplayWin() {
 //popup modal if you reach max tries -- offer to play again
 function DisplayLoss() {
   //modal popup
+
+  var actualWord = document.querySelector("#actual-word");
+  actualWord.innerHTML = answer;
   setTimeout(function () {
     $("#lossModal").modal("show");
   }, 500);
