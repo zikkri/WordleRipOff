@@ -34,7 +34,7 @@
         <div class="container-fluid guess">
           <input type="text" id="guesser" maxlength="5" minlength="5" />
           <button>Guess</button>
-          <button id="reset">New Game</button>
+          <button id="reset" onclick="NewGame()">New Game</button>
         </div>
         <div
           class="d-flex justify-content-center all-divs"
@@ -226,7 +226,7 @@
               data-bs-dismiss="modal"
               onclick="NewGame()"
             >
-              Guess Again
+              Close
             </button>
             <button
               type="button"

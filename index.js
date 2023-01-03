@@ -197,7 +197,7 @@ function GetWord() {
       //console.log(modifiedLines);
       answer =
         modifiedLines[Math.floor(Math.random() * modifiedLines.length - 1) + 1];
-      console.log(answer);
+      //console.log(answer);
 
       possibleWords = modifiedLines;
     }
@@ -285,5 +285,5 @@ function ResetAll() {
 function NewWord() {
   answer =
     possibleWords[Math.floor(Math.random() * possibleWords.length - 1) + 1];
-  console.log(answer);
+  //console.log(answer);
 }
